@@ -1,7 +1,7 @@
 package src;
 
 /**
- *  pagination
+ *  Class with the purpose to paginate text with 80 characters per line and 25 lines per page.
  */
 public class Pagination {
 
@@ -43,7 +43,7 @@ public class Pagination {
                     lineCount = 1;  //reset count
                 }
             }
-            
+
             finalText[page] += word +" ";  //add word followed by a whitespace
             charCount += word.length();
         }
