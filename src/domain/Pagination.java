@@ -4,6 +4,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+
 /**
  *  Class with the purpose to paginate a doucment with 80 characters per line and 25 lines per page.
  * 
@@ -91,12 +97,44 @@ public class Pagination {
     /**
      * Creats the file or replace the content of the given document name with the given paginated text. 
      * 
-     * @param docName - Name of the document.
+     * @param docPath - Name of the document.
      * 
      * @param text - Paginated text, 
      */
-    private void writeDocument(String docName, String[] text) {
-        //not implemented yet
+    private void writeDocument(String docPath, String[] text) {
+        // Specify the file path for the PDF
+        String pdfPath = "example.pdf";
+
+        // Create a new PDF document
+        try (PDDocument document = new PDDocument()) {
+            // Add a blank page to the document
+            PDPage page = new PDPage();
+            document.addPage(page);
+
+            // Create a content stream to write to the page
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                // Begin the content stream
+                contentStream.beginText();
+
+                // Set font and font size
+                contentStream.setFont(PDType1Font.HELVETICA, 12);
+
+                // Set text position
+                contentStream.newLineAtOffset(100, 700);
+
+                // Add text
+                contentStream.showText("Hello, World! This is a PDF document created with PDFBox.");
+
+                // End the content stream
+                contentStream.endText();
+            }
+
+            // Save the PDF to the specified path
+            document.save(pdfPath);
+            System.out.println("PDF created successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     /**
      * Main function of the class:
@@ -104,7 +142,7 @@ public class Pagination {
      * creates or replace a document with name stored in {@code outputDocName}
      * and writes the result on it.
      * 
-     * @param inputDoc - Input Document with one line text.
+     * @param inputDocTxt - Input Document with one line text.
      * 
      */
     public void paginateDoc(String inputDocTxt){
