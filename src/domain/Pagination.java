@@ -106,16 +106,15 @@ public class Pagination {
      * 
      * @param inputDoc - Input Document with one line text.
      * 
-     * @param outputDocName - Output Document where to write the paginated {@code inputDoc}.
      */
-    public void paginateDoc(String inputDocTxt, String outputDocName){
+    public void paginateDoc(String inputDocTxt){
         //Read the input document 
         String text = this.readDocument(inputDocTxt);   
 
         //Paginate the text which will be safed in the FinalText Variable
         String[] paginatedText = this.paginateText(text);
 
-        this.writeDocument(outputDocName, paginatedText);
+        this.writeDocument(inputDocTxt, paginatedText);
         
     }
 

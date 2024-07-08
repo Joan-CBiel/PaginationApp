@@ -6,7 +6,7 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("My Application");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 300);
+            frame.setSize(600, 400);
             frame.setContentPane(new HomePage(frame).getPanel());
             frame.setVisible(true);
         });
