@@ -14,7 +14,7 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import exceptions.*;
 
 /**
- *  Class with the purpose to paginate a doucment with 80 characters per line and 25 lines per page.
+ *  Class with the purpose to paginate a document with 80 characters per line and 25 lines per page.
  * 
  *  <p> Transform a {@code String text} to {@code String[] paginatedText} in which element represents a page.</p> 
  */
