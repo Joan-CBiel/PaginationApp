@@ -1,6 +1,9 @@
 package presentation;
 import javax.swing.*;
 
+/**
+ * Main function of the program, displays the frame
+ */
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

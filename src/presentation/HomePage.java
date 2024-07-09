@@ -10,13 +10,36 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-
+/**
+ * Builds a display frame that lets import the document to paginate and,
+ * let export the document paginated on the desire directory.
+ */
 public class HomePage {
-    private JPanel panel;
+
+    /**
+     * frame of the HomePage.
+     */
     private JFrame frame;
 
+    /**
+     * Pannel of the HomePage.
+     */
+    private JPanel panel;
+
+    /**
+     * Label with the imported document directory.
+     */
     private JLabel importLabel;
+
+    /**
+     * Label with the exported document directory.
+     */
     private JLabel exportLabel;
+
+    /**
+     * Constructor of the Home Page.
+     * @param frame - Existing frame with title, size and default settings added.
+     */
     public HomePage(JFrame frame) {
         this.frame = frame;
         JLabel label = new JLabel("Welcome, this application is used for paginating one line documents.", SwingConstants.CENTER);
@@ -64,6 +87,9 @@ public class HomePage {
         frame.add(panel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Display the chooser file document with txt filter.
+     */
     private void chooseInputDocument() {
         JFileChooser fileChooser = new JFileChooser();
         File workingDirectory = new File(System.getProperty("user.dir"));
@@ -91,6 +117,10 @@ public class HomePage {
                 break; // User cancelled the dialog
         }
     }
+
+    /**
+     * Display the chooser file document with txt and pdf filter.
+     */
     private void chooseOutputDocument() {
         JFileChooser fileChooser = new JFileChooser();
         File workingDirectory = new File(System.getProperty("user.dir"));
@@ -119,6 +149,9 @@ public class HomePage {
 
     }
 
+    /**
+     * Paginates the imported document and writes the result to the exported document.
+     */
     private void paginateDocument(){
         if(Objects.equals(importLabel.getText(), "") || Objects.equals(exportLabel.getText(), ""))
             JOptionPane.showMessageDialog(frame, "Make sure to select the Input and Output files", "Files not selected", JOptionPane.ERROR_MESSAGE);
@@ -138,6 +171,9 @@ public class HomePage {
 
     }
 
+    /**
+     * @return frame of the HomePage
+     */
     public JFrame getFrame() {
         return frame;
     }
