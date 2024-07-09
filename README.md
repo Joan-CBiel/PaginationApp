@@ -16,8 +16,8 @@ cd EXE
 java -jar PaginationApp.jar
 ```
 ## Use of the app
-* Import a one line document.txt.
-* Choose where to save the output document, can be in pdf or txt format.
+* With the import button, choose the one line document.txt to be paginated.
+* With the export button, choose where to save the output document, must be in pdf or txt format.
 * Press paginate button.
   
 ## Source code
